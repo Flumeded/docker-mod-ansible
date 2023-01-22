@@ -4,10 +4,11 @@ echo "*** Ansible Installer ***"
 echo "Checking if ansible is installed"
 
 if ! command -v ansible &> /dev/null; then
-    echo "ansible is not installed, installing now..."
+    echo "ansible is not installed, adding to installation queue"
+    echo "ansible" >> /mod-pip-packages-to-install.list
     if ! command -v pip3 &> /dev/null; then
-        echo "pip3 is not installed, installing now..."
-        apt-get install python3 python3-pip -y
+        echo "pip3 is not installed, adding to installation queue"
+        echo "python3 python3-pip" >> /mod-repo-packages-to-install.list
     fi
     pip3 install ansible
 else
@@ -18,8 +19,8 @@ echo "*** Ansible-lint installer"
 echo "Checking if ansible-lint is installed"
 
 if ! command -v ansible-lint &> /dev/null; then
-        echo "ansible-lint is not installed, installing now..."
-        pip3 install ansible-lint
+        echo "ansible-lint is not installed, adding to installation queue"
+        echo "ansible" >> /mod-pip-packages-to-install.list
 else
         echo "ansible-lint is already installed"
 fi
