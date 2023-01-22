@@ -20,7 +20,7 @@ echo "Checking if ansible-lint is installed"
 
 if ! command -v ansible-lint &> /dev/null; then
         echo "ansible-lint is not installed, adding to installation queue"
-        echo "ansible" >> /mod-pip-packages-to-install.list
+        echo "ansible-lint" >> /mod-pip-packages-to-install.list
 else
         echo "ansible-lint is already installed"
 fi
