@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bash
+
+echo "*** Ansible Installer ***"
+echo "Checking if ansible is installed"
+
+if ! command -v ansible &> /dev/null; then
+    echo "ansible is not installed, installing now..."
+    if ! command -v pip3 &> /dev/null; then
+        echo "pip3 is not installed, installing now..."
+        apt-get install python3 python3-pip -y
+    fi
+    pip3 install ansible
+else
+    echo "ansible is already installed, skipping!"
+fi
+
+echo "*** Ansible-lint installer"
+echo "Checking if ansible-lint is installed"
+
+if ! command -v ansible-lint &> /dev/null; then
+        echo "ansible-lint is not installed, installing now..."
+        pip3 install ansible-lint
+else
+        echo "ansible-lint is already installed"
+fi
